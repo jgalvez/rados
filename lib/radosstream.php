@@ -206,6 +206,10 @@ class RadosStream {
 		}
 		$size = strlen($data);
 
+		//This should not fix the upload, but it does :/ - NEVER merge this
+		echo json_encode($this);
+		//NEVER MERGE
+
 		$ret = \rados_write($this->ioctx, $this->stat['oid'], $data, $this->pos);
 		if (!$ret) {
 			throw new IOException("Could not write to '".$this->stat['oid']."'");
